@@ -10,6 +10,7 @@ public class DemoController {
 
     @Autowired
     private CustomerDao customerDao;
+
     @GetMapping(value = "test")
     public String getResult(){
         return customerDao.findOne(0L).getCustName();

@@ -32,6 +32,7 @@ public class JpaRepositoryFactoryBean<T extends Repository<S, ID>, S, ID extends
 
 
     private T  createProxy(){
+        System.out.println("在autowire注入时，创建了动态代理和SimpleJpaRepository。");
         //使用JDK proxy生成代理类
         ProxyFactory factory = new ProxyFactory();
         factory.setInterfaces(new Class[] { CustomerDao.class });
