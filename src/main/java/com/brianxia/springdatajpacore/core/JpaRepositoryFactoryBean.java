@@ -36,7 +36,8 @@ public class JpaRepositoryFactoryBean<T extends Repository<S, ID>, S, ID extends
         //使用JDK proxy生成代理类
         ProxyFactory factory = new ProxyFactory();
         factory.setInterfaces(new Class[] { CustomerDao.class });
-        factory.addAdvice(ExposeInvocationInterceptor.INSTANCE);
+//        factory.addAdvice(ExposeInvocationInterceptor.INSTANCE);
+        factory.addAdvice(new JpaRepositoryMethodBeforeAdvice());
         factory.setTarget(new SimpleJpaRepository<>());
         return (T) factory.getProxy(classLoader);
     }
